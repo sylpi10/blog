@@ -1,8 +1,12 @@
 from django.db import models
+from django.template.defaultfilters import slugify
 
 
 class PostCategory(models.Model):
     name = models.CharField(max_length=50)
+
+    def slug(self):
+        return slugify(self.name)
 
     def __str__(self):
         return self.name
@@ -31,7 +35,7 @@ class Comment(models.Model):
         (STATUS_MODERATED, 'Moderated')
     )
 
-    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='comments')
     author_name = models.CharField(max_length=100)
     text = models.TextField()
     status = models.CharField(max_length=20, default=STATUS_VISIBLE, choices=STATUS_CHOICES, editable=True)
