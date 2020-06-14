@@ -1,10 +1,11 @@
 from django.urls import reverse_lazy
 
 NAV_POSTS = 'Posts'
+NAV_ABOUT = 'About'
 
 NAV_ITEMS = (
     (NAV_POSTS, reverse_lazy('home')),
-    ('Test', reverse_lazy('home')),
+    (NAV_ABOUT, reverse_lazy('about')),
 )
 
 

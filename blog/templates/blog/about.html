@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} About {% endblock %}
+
+{% block content %}
+    
+    <div class="col-12">
+        <h1>About</h1>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-9">
+                <p class="lead">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque cupiditate iusto minus quia temporibus? Aspernatur consectetur nam nesciunt optio vitae. Est iste iusto quibusdam sit voluptatum? Aut eum velit voluptatem.
+                    
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, culpa, sapiente? Alias amet error et, omnis quam reprehenderit vitae! Architecto autem eaque ipsum minima odit pariatur quasi suscipit temporibus voluptatum.
+                </p>
+                
+            </div>
+            
+            <div class="col-md-3">
+                <img src="{% static 'img/django.png' %}" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

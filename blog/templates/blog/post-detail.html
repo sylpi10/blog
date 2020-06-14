@@ -20,8 +20,16 @@
 
         <!--        comments -->
         <hr>
-        <div class="my-3">
+        <div class="my-3" id="comments">
             <h3 class="mb-3">Comments :</h3>
+
+            {% if message %}
+                <div class="alert alert-success alert-dismissable fade show">
+                    {{ message }}
+                    <button class="close" type="button" data-dismiss="alert">&times;</button>
+                </div>
+            {% endif %}
+
             <ul class="list-unstyled">
                 {% for com in comments %}
                 <li class="media">
@@ -57,7 +65,7 @@
                 <input type="submit" class="btn btn-primary" value="Comment">
                 {% endbuttons %}
             </form>
-            
+<!--            <p  {% if message.tags %} class=" {{ message.tags }} m-4 text-success bg-white w-50 p-1 text-center my-2 mx-auto" {% endif %}> {{ message }} </p>-->
         </div>
 
     </div>
