@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from blog.models import Post, Comment
 from blog import model_helpers, navigation
+from blog.forms import CreateCommentForm
 
 # Create your views here.
 def post_list(request, category_name=model_helpers.post_category_all.slug()):
@@ -22,11 +23,14 @@ def post_detail(request, post_id, category_name=model_helpers.post_category_all.
     post_same_category = Post.objects.filter(published=True, category=post.category).exclude(pk=post_id)
     comments = post.comments.exclude(status=Comment.STATUS_HIDDEN).order_by('created_at')
 
+    comment_form = CreateCommentForm()
+
     context = {
         'navigation_items': navigation.navigation_items(navigation.NAV_POSTS),
         'post': post,
         'post_same_category': post_same_category,
-        'comments': comments
+        'comments': comments,
+        'comment_form': comment_form,
     }
     return render(request, 'blog/post-detail.html', context)
 
